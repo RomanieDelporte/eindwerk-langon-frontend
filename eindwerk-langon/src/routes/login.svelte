@@ -1,10 +1,7 @@
 <script>
-import Inputfield from "../components/Inputfield.svelte";
+  import Button from "../components/Button.svelte";
+  import Inputfield from "../components/Inputfield.svelte";
 </script>
-
-<style lang="scss">
-  @import "../style/pages/Login_page.scss";
-</style>
 
 <div class="login">
   <div class="login_content">
@@ -15,8 +12,21 @@ import Inputfield from "../components/Inputfield.svelte";
   </div>
   <div class="login_fields">
     <h1>Get Started</h1>
-    <Inputfield  placeholder="ik ben hier"/>
+    <div class="login_name">
+      <Inputfield placeholder="Romanie" label="First name*" />
+      <Inputfield placeholder="Delporte" label="Last name*" />
+    </div>
+    <div class="login_email">
+      <Inputfield
+        placeholder="romaniedelporte230@gmail.com"
+        label="Email Adress*"
+      />
+      <Inputfield placeholder="test123" label="Create password*" />
+    </div>
+    <Button label="sign up" />
   </div>
 </div>
 
-
+<style lang="scss">
+  @import "../style/pages/Login_page.scss";
+</style>

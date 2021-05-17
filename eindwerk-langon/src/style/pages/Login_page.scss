@@ -1,24 +1,28 @@
 @import '../theme.scss';
 
 .login {
+
     display: flex;
     font-family: $primary-font;
+
+
     &_content {
         background-color: $main-base;
         width: 50vw;
         height: 100vh;
         display: flex;
         justify-content: center;
-        align-items: center; 
-        
+        align-items: center;
+
     }
+
     &_logo {
         color: $main-naturel;
         font-family: $primary-font;
         font-size: 20px;
         margin-left: 100px;
 
-       
+
         p {
             font-size: 22px;
             margin-top: -2px;
@@ -30,10 +34,18 @@
         position: relative;
         left: calc(100px + 20vw - 20vw);
         margin-top: 100px;
-        display:flex;
 
         h1 {
             font-size: 50px;
         }
     }
+
+    &_name  {
+        display: flex;
+        margin-right: 5px;
+    }
+    
+   
+
+
 }

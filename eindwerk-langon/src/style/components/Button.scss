@@ -1,0 +1,11 @@
+@import "../theme.scss";
+
+.button button {
+  color: #ffffff;
+  background-color: $main-naturel;
+  border-radius: 6px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border: 1px solid $main-naturel;
+  outline: 0;
+}

@@ -1,7 +1,6 @@
 @import '../theme.scss';
 
 .login {
-
     display: flex;
     font-family: $primary-font;
 
@@ -30,22 +29,23 @@
         }
     }
 
-    &_fields {
+    &_inputs {
         position: relative;
         left: calc(100px + 20vw - 20vw);
         margin-top: 100px;
 
-        h1 {
-            font-size: 50px;
+        &_names {
+            display: flex;
+        }
+
+        &_button {
+            margin-top: 30px;
+            width: 91%;
+        }
+
+        &_rights {
+            display: flex;
         }
     }
-
-    &_name  {
-        display: flex;
-        margin-right: 5px;
-    }
-    
-   
-
 
 }

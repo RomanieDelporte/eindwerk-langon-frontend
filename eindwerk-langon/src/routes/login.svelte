@@ -10,20 +10,29 @@
       <p>i18n your projects</p>
     </div>
   </div>
-  <div class="login_fields">
+  <div class="login_inputs">
     <h1>Get Started</h1>
-    <div class="login_name">
-      <Inputfield placeholder="Romanie" label="First name*" />
-      <Inputfield placeholder="Delporte" label="Last name*" />
+    <div class="login_inputs_names">
+      <Inputfield label="Firstname*" placeholder="Romanie" />
+      <Inputfield label="Lastname*" placeholder="Delporte" />
     </div>
-    <div class="login_email">
+    <div class="login_inputs_email">
       <Inputfield
-        placeholder="romaniedelporte230@gmail.com"
         label="Email Adress*"
+        placeholder="romaniedelporte230@gmail.com"
       />
-      <Inputfield placeholder="test123" label="Create password*" />
     </div>
-    <Button label="sign up" />
+    <div class="login_inputs_password">
+      <Inputfield label="Create your password*" placeholder="test123" />
+    </div>
+    <div class="login_inputs_button">
+      <Button label="Sign up" />
+      <p>Already sign in? <a href="login">Sign up</a></p>
+    </div>
+    <div class="login_inputs_rights">
+      <p>© 2021 Langon. All rights reserved.</p>
+      <p>Terms off conditions - Privacy policy.</p>
+    </div>
   </div>
 </div>
 

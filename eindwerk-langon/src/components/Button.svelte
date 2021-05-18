@@ -1,14 +1,10 @@
 <script>
   export let label;
-  // export let icon;
-
-  function handleClick() {
-    props.onclick();
-  }
+  export let isNormal = false;
 </script>
 
 <div class="button">
-  <button on:click={handleClick}>
+  <button  class:normal={isNormal}>
     {label}
   </button>
 </div>

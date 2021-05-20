@@ -1,15 +1,16 @@
 <script>
 </script>
 
-<style>
-	
-</style>
-
 <svelte:head>
-	<title>Langon</title>
+  <title>Langon</title>
 </svelte:head>
 
-<div class="login_title">
-	<h1>Langon</h1>
+<style lang="scss">
+  @import "../style/pages/HomePage.scss";
+</style>
+
+<div class="home">
+  <p>test</p>
 </div>
+
 

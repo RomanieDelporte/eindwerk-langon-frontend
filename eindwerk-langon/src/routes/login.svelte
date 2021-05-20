@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "@sapper/app";
   import Button from "../components/Button.svelte";
   import Inputfield from "../components/Inputfield.svelte";
 </script>
@@ -11,23 +12,19 @@
     </div>
   </div>
   <div class="login_inputs">
-    <h1>Get Started</h1>
-    <div class="login_inputs_names">
-      <Inputfield label="Firstname*" placeholder="Romanie" />
-      <Inputfield label="Lastname*" placeholder="Delporte" />
-    </div>
-    <div class="login_inputs_email">
+    <h1>Sign in</h1>
+    <div class="login_inputs_data">
       <Inputfield
-        label="Email Adress*"
+        type="email"
+        label="Email Adress"
         placeholder="romaniedelporte230@gmail.com"
       />
+      <Inputfield type="password" label="Password" placeholder="test123" />
     </div>
-    <div class="login_inputs_password">
-      <Inputfield label="Create your password*" placeholder="test123" />
-    </div>
+
     <div class="login_inputs_button">
-      <Button label="Sign up" />
-      <p>Already sign in? <a href="login">Sign up</a></p>
+      <Button label="Sign up" on:click={() => goto("/")} />
+      <p>Already sign in? <a href="register">Sign up</a></p>
     </div>
     <div class="login_inputs_rights">
       <p>© 2021 Langon. All rights reserved.</p>
@@ -37,5 +34,5 @@
 </div>
 
 <style lang="scss">
-  @import "../style/pages/Login_page.scss";
+  @import "../style/pages/LoginPage.scss";
 </style>

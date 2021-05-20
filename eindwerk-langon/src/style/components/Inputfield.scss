@@ -1,8 +1,8 @@
 @import "../theme.scss";
 
 .inputfield {
-   margin-right: 50px;
-
+  //  margin-right: 50px;
+ flex: 1;
   &_input input {
     border: 1px solid $ink-light;
     box-sizing: border-box;
@@ -12,6 +12,10 @@
     width: 100%;
     height: 40px;
 
+  }
+
+  ::placeholder {
+    color: $ink-light;
   }
 
 

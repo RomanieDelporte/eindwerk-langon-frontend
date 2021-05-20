@@ -1,17 +1,19 @@
 <script>
   import Nav from "../components/Nav.svelte";
-
   export let segment;
 </script>
 
-<style lang="scss">
-	@import '../style/global.scss';
-	
-  </style>
-<Nav {segment} />
+<!-- {#if segment != "login"}
+  <Nav {segment} />
+{/if} -->
+{#if segment != "login" && segment != "register"}
+  <Nav {segment} />
+{/if}
 
 <main>
   <slot />
 </main>
 
-
+<style lang="scss">
+  @import "../style/global.scss";
+</style>

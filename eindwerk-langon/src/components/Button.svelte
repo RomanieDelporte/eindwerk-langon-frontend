@@ -4,7 +4,7 @@
 </script>
 
 <div class="button">
-  <button  class:normal={isNormal}>
+  <button class:normal={isNormal} on:click>
     {label}
   </button>
 </div>

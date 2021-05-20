@@ -2,6 +2,7 @@
   export let label;
   // export let name;
   export let placeholder;
+  export let type;
   // let value;
   // export let id;
 </script>
@@ -11,7 +12,7 @@
     <p>{label}</p>
   </div>
   <div class="inputfield_input">
-    <input  {placeholder}  />
+    <input {type} {placeholder} />
   </div>
 </div>
 

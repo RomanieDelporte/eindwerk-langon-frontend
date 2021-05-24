@@ -3,9 +3,6 @@
   export let segment;
 </script>
 
-<!-- {#if segment != "login"}
-  <Nav {segment} />
-{/if} -->
 {#if segment != "login" && segment != "register"}
   <Nav {segment} />
 {/if}

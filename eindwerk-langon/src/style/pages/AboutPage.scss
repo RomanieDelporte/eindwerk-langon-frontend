@@ -1,0 +1,51 @@
+@import "../theme.scss";
+
+
+.about {
+  padding: 6rem 320px;
+
+
+  &_page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50%;
+    }
+  
+
+  }
+
+  &_content {
+    margin-left: -25%;
+
+    p {
+      margin-top: -2%;
+      margin-left: 0.2%;
+    }
+  }
+
+  &_background {
+    background-color : $accent-base;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 50%;
+  }
+
+  &_intro {
+    p {
+      text-align: right;
+      color: $main-naturel;
+    }
+  }
+
+  &_using {
+    display: flex; 
+    justify-content: center;
+
+    h2 {
+      margin-top: 70px;
+    }
+  }
+}

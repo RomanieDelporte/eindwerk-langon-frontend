@@ -47,6 +47,13 @@ export default {
           hydratable: true,
         },
         preprocess,
+        onwarn: (warning, handler) => {
+          const { code, frame } = warning;
+          if (code === "css-unused-selector")
+              return;
+  
+          handler(warning);
+      },
       }),
       url({
         sourceDir: path.resolve(__dirname, "src/node_modules/images"),

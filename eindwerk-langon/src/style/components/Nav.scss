@@ -2,13 +2,17 @@
 
 .navigation {
   background: $main-base;
-  min-height: 100vh;
-  position: fixed;
+  height: 100vh;
+  position: sticky;
+  // width: 200px;
   top: 0;
-  left: 0;
-  width: 230px;
+  bottom: 0;
+  // left: 0;
+  // width: 230px;
   display: flex;
   flex-direction:column;
+
+
 
   &_logo  {
     margin-left: 10%;
@@ -72,7 +76,7 @@
     position: relative;
     display: inline-block;
     background-color: $accent-red;
-    width: 160px;
+    width: 94.9%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;;
 

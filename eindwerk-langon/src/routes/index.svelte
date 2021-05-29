@@ -3,9 +3,18 @@
 </style>
 
 <script>
-import { goto } from "@sapper/app";
+// import { goto } from "@sapper/app";
 import Button from "../components/Button.svelte";
-import Title from "../components/Title.svelte";
+import Dropdown from "../components/Dropdown.svelte";
+import Inputfield from "../components/Inputfield.svelte";
+import ModalLanguage from "../components/ModalLanguage.svelte";
+// import Title from "../components/Title.svelte";
+
+let showModal = false;
+
+const toggleModal = () => {
+  showModal = !showModal;
+};
 </script>
 
 <svelte:head>
@@ -13,34 +22,20 @@ import Title from "../components/Title.svelte";
 </svelte:head>
 
 <div class="home">
-  <div class="home_layout">
-    <div class="home_intro">
-      <div class="home_title">
-        <h1>Welcome to</h1>
-        <img src="/images/logo_website_black.svg" alt="homelogo" />
-      </div>
-      <div class="home_firstname">
-        <h1>Romanie</h1>
-      </div>
-      <div class="home_text">
-        <p>
-          We ensure smooth <br /> cooperation and <br /> professional translation
-        </p>
-      </div>
-      <div class="home_button">
-        <Button
-          label="About us"
-          isNormal="{true}"
-          on:click="{() => goto('/about')}" />
-      </div>
+  <ModalLanguage
+    title="Choose a language"
+    text="Choose a language in wich you want to translate your website?"
+    showModal="{showModal}"
+    on:click="{toggleModal}">
+    <Dropdown />
+    <div class="buttons">
+      <Button ref="margin" label="Cancel" isSecondary="{true}" />
+      <Button label="Save" />
     </div>
-    <div class="home_image">
-      <div class="home_picture">
-        <img src="/images/home_picture.jpg" alt="home" />
-      </div>
+  </ModalLanguage>
+  <div class="p-pages">
+    <div class="home">
+      <Button label="Open Modal" on:click="{toggleModal}" />
     </div>
-  </div>
-  <div class="home_users">
-    <Title text="Users" />
   </div>
 </div>

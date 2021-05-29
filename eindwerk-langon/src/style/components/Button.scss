@@ -1,7 +1,6 @@
 @import "../theme.scss";
 
 .button {
-
   button {
     color: #ffffff;
     background-color: $main-light;
@@ -17,6 +16,11 @@
   .normal {
     background-color: $accent-red;
     border: 1px solid $accent-red;
+  }
+
+  .secondary {
+    background-color: $main-naturel;
+    color:red;
   }
 
 }

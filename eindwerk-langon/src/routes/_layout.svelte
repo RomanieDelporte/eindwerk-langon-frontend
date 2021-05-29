@@ -1,16 +1,18 @@
+<style lang="scss">
+@import "../style/global.scss";
+</style>
+
 <script>
-  import Nav from "../components/Nav.svelte";
-  export let segment;
+import Nav from "../components/Nav.svelte";
+export let segment;
 </script>
 
-{#if segment != "login" && segment != "register"}
-  <Nav {segment} />
-{/if}
+<div class="d-flex">
+  {#if segment != "login" && segment != "register"}
+    <Nav segment="{segment}" />
+  {/if}
 
-<main>
-  <slot />
-</main>
-
-<style lang="scss">
-  @import "../style/global.scss";
-</style>
+  <main>
+    <slot />
+  </main>
+</div>

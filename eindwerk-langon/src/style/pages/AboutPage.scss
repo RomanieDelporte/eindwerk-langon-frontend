@@ -2,50 +2,86 @@
 
 
 .about {
-  padding: 6rem 320px;
-
-
+ 
   &_page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    background-color: $accent-base;
+    width: 50%;
+    padding: 1rem;
+  }
+
+  &_subtag {
+    p {
+      margin-top: -5px;
+    }
 
     img {
-      width: 50%;
+      width: 20rem;
+      margin-left: -60px;
     }
-  
 
-  }
-
-  &_content {
-    margin-left: -25%;
-
-    p {
-      margin-top: -2%;
-      margin-left: 0.2%;
+    p:nth-child(2) {
+      margin-left: -60px;
     }
-  }
 
-  &_background {
-    background-color : $accent-base;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 50%;
-  }
-
-  &_intro {
-    p {
+    p:nth-child(3) {
       text-align: right;
+      padding-top: 5px;
+      font-weight: 500;
       color: $main-naturel;
     }
   }
 
-  &_using {
-    display: flex; 
+  &_content {
+    display: flex;
+    align-items: center;
     justify-content: center;
+  }
 
-    h2 {
-      margin-top: 70px;
+  // &_information {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-around;
+  //   margin-top: 100px;
+  // }
+
+  &_quick {
+    background-color: $ink-light;
+    border: 4px solid $ink-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  h2 {
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  &_using {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_platform {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_info {
+    
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+    
+  }
+
+  &_picture {
+    img {
+      width: 30rem;
     }
   }
+
 }

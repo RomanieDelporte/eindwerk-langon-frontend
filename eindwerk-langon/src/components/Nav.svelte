@@ -8,7 +8,7 @@ export let segment;
 let page;
 </script>
 
-<div class="navigation">
+<aside class="navigation">
   <div class="navigation_logo">
     <img src="/images/logo_langon.svg" alt="logo langon" />
   </div>
@@ -41,4 +41,4 @@ let page;
   <div class="navigation_logout">
     <a href="/login">Afmelden</a>
   </div>
-</div>
+</aside>

@@ -3,17 +3,17 @@
 </style>
 
 <script>
-let languages = [
-  { id: 1, language: `English` },
-  { id: 2, language: `French` },
-  { id: 3, language: `Dutch` },
+import Select from "svelte-select";
+
+let items = [
+  { value: "English", label: "English" },
+  { value: "French", label: "French" },
+  { value: "Dutch", label: "Dutch" },
+  { value: "German", label: "German" },
+  { value: "Spanish", label: "Spanish" },
 ];
 </script>
 
-<select>
-  {#each languages as lang}
-    <option value="{lang}">
-      {lang.language}
-    </option>
-  {/each}
-</select>
+<div class="dropdown">
+  <Select placeholder="Choose a language" items="{items}" />
+</div>

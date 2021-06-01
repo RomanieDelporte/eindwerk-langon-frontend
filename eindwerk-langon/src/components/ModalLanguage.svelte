@@ -12,7 +12,7 @@ export let showModal = false;
   <div class="modal">
     <div class="modal_background" on:click|self>
       <div class="modal_content">
-        <h2 class="title">{title}</h2>
+        <h3 class="title">{title}</h3>
         <p>{text}</p>
         <slot />
       </div>

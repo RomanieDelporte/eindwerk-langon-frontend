@@ -30,8 +30,9 @@ let page;
       </li>
       <li>
         <a
+          rel="prefetch"
           aria-current="{segment === 'settings' ? 'page' : undefined}"
-          href="settings">Settings</a>
+          href="settings/personal">Settings</a>
       </li>
     </ul>
   </nav>

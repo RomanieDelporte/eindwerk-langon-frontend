@@ -1,0 +1,19 @@
+@import "../theme.scss";
+
+.personal {
+  
+  img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+  }
+  
+  &_image {
+    cursor: pointer;
+    // margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+}

@@ -12,6 +12,7 @@
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^1.0.0",
+    "svelte-select": "^3.17.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   },
   "devDependencies": {

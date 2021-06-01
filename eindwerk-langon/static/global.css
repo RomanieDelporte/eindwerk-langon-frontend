@@ -47,6 +47,16 @@ p {
 	text-align: center;
 }
 
+.marginSet {
+	margin-left: 35px;
+  margin-top: -30px;
+}
+
+.placeInput {
+	display: flex;
+	gap: 50px;
+}
+
 img {
 	max-width: 100%;
 	height: auto;

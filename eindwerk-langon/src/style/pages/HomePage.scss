@@ -56,11 +56,40 @@
 
 }
 
-.buttons {
-  display: flex; 
-  justify-content: flex-end;
-}
 
-:global([ref=margin]) {
-  margin-right: 15px;
+// .buttons {
+//   display: flex; 
+//   justify-content: flex-end;
+// }
+
+// :global([ref=margin]) {
+//   margin-right: 15px;
+// }
+
+
+
+.home {
+  display: flex;
+
+  &_intro {
+    p {
+      font-weight: 300;
+    }
+  }
+  &_button {
+    width: 10vw;
+  }
+
+  &_picture {
+    margin-left: 50px;
+    width: 20rem;
+  }
+
+  &_users {
+    margin-top: 40px;
+  }
+
+  &_usercard {
+    margin-top: 50px;
+  }
 }

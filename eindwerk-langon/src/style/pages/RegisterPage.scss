@@ -44,8 +44,12 @@
 
         &_rights {
             display: flex;
-            margin-top: 160px;
+            margin-top: 70px;
             font-family: $primary-font;
+           
+            p {
+                font-size: 14px;
+            }
         }
 
         &_rights p:nth-child(2) {
@@ -57,7 +61,9 @@
         &_inputs {
             margin-top: 150px;
             
+            &_rights {
+            margin-top:200px;
+            }
         }
-       
     }
 }

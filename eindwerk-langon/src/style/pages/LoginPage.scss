@@ -38,13 +38,27 @@
 
         &_rights {
             display: flex;
-            margin-top: 240px;
+            margin-top: 190px;
             font-family: $primary-font;
+
+            p {
+                font-size: 14px;
+            }
         }
 
         &_rights p:nth-child(2) {
             margin-left: 30px;
         }  
+    }
+
+    @media only screen and (min-width: 1920px) {
+        &_inputs {
+            margin-top: 150px;
+            
+            &_rights {
+             margin-top:370px;
+            }
+        }
     }
 
 }

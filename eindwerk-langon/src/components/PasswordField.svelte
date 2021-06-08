@@ -14,6 +14,6 @@ export let value;
     <p>{label}</p>
   </div>
   <div class="inputfield_input">
-    <input bind:value="{value}" placeholder="{placeholder}" type="text" />
+    <input bind:value placeholder="{placeholder}" type="password" />
   </div>
 </div>

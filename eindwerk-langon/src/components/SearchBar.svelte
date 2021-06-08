@@ -5,9 +5,9 @@
 <script>
 export let type;
 export let placeholder;
-export let icon;
+// export let value;
 </script>
 
 <div class="searchbar">
-  <input type="{type}" placeholder="{placeholder}" icon="{icon}" />
+  <input class="borderline" type="{type}" placeholder="{placeholder}" />
 </div>

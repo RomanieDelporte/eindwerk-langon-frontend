@@ -6,10 +6,6 @@
 import Button from "./Button.svelte";
 let shown = false;
 
-const shownText = () => {
-  shown = !shown;
-};
-
 let id = null;
 let translation = [
   {
@@ -29,9 +25,10 @@ let translation = [
   },
 ];
 
-
-
-
+const shownText = (id) => {
+  shown = !shown;
+  id;
+};
 
 console.log(translation);
 </script>
@@ -63,10 +60,7 @@ console.log(translation);
             <td>{lat.translation}</td>
           {/if}
           <td>
-            <Button
-              on:click="{() => console.log(lat.id)}"
-              label="edit"
-              on:click="{shownText}" />
+            <Button label="edit" on:click="{shownText}" />
           </td>
         </tr>
       {/each}

@@ -16,25 +16,22 @@ export async function preload(page, session) {
 <script>
 // import { goto } from "@sapper/app";
 import Button from "../components/Button.svelte";
-import Dropdown from "../components/Dropdown.svelte";
-import ImageUpload from "../components/ImageUpload.svelte";
-import Inputfield from "../components/Inputfield.svelte";
-import ModalLanguage from "../components/ModalLanguage.svelte";
-import SearchBar from "../components/SearchBar.svelte";
 import Title from "../components/Title.svelte";
 import UserCard from "../components/UserCard.svelte";
-import { SearchIcon } from "svelte-feather-icons";
-import { dataset_dev } from "svelte/internal";
+import ImageUpload from "../components/ImageUpload.svelte";
+import { checkAuth } from "../routes/auth.js";
+import { onMount } from "svelte";
 
-// import Title from "../components/Title.svelte";
-// export let users;
-// console.log(users.firstname);
-// console.log(users);
-// let showModal = false;
-
-// const toggleModal = () => {
-//   showModal = !showModal;
-// };
+// deze var checkt of de gebruiker iets mag zien, vooraleer iets te tonen
+let isAuth = false;
+//pas nadat de pagina gemount is, mag de checkauth functie lopen. anders is localstorage niet beschikbaar.
+onMount(async () => {
+  try {
+    isAuth = await checkAuth(["Administrator"]);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 export let users;
 </script>
@@ -43,36 +40,38 @@ export let users;
   <title>Langon</title>
 </svelte:head>
 
-<div class="home">
-  <div class="p-pages">
-    <div class="home">
-      <div class="home_intro">
-        <h1>Welcome to Langon <br /> Romanie</h1>
-        <p>
-          We ensure smooth<br /> cooperation and <br /> professional translation
-        </p>
-        <div class="home_button">
-          <Button label="About us" isNormal="{true}" />
+{#if isAuth !== false}
+  <div class="home">
+    <div class="p-pages">
+      <div class="home">
+        <div class="home_intro">
+          <h1>Welcome to Langon <br /> Romanie</h1>
+          <p>
+            We ensure smooth<br /> cooperation and <br /> professional translation
+          </p>
+          <div class="home_button">
+            <Button label="About us" isNormal="{true}" />
+          </div>
+        </div>
+        <div class="home_picture">
+          <img src="/images/home_picture.jpg" alt="" />
         </div>
       </div>
-      <div class="home_picture">
-        <img src="/images/home_picture.jpg" alt="" />
-      </div>
-    </div>
-    <div class="home_users">
-      <Title text="Users" />
-      <div class="home_usercard">
-        {#each users as user}
-          <UserCard
-            firstname="{user.firstname}"
-            lastname="{user.lastname}"
-            email="{user.email}">
-            <ImageUpload />
-          </UserCard>
-        {:else}
-          <p>loading...</p>
-        {/each}
+      <div class="home_users">
+        <Title text="Users" />
+        <div class="home_usercard">
+          {#each users as user}
+            <UserCard
+              firstname="{user.firstname}"
+              lastname="{user.lastname}"
+              email="{user.email}">
+              <ImageUpload />
+            </UserCard>
+          {:else}
+            <p>loading...</p>
+          {/each}
+        </div>
       </div>
     </div>
   </div>
-</div>
+{/if}

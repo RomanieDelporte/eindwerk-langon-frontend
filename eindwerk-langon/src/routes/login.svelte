@@ -8,10 +8,15 @@ import Button from "../components/Button.svelte";
 import Inputfield from "../components/Inputfield.svelte";
 import PasswordField from "../components/PasswordField.svelte";
 import { checkAuth } from "../routes/auth.js";
+import jwt_decode from "jwt-decode";
+import { onMount } from "svelte";
+
 let email = "";
 let password = "";
 let errors;
+
 const login = async () => {
+  //login bij directus
   const res = await fetch("http://localhost:8055/auth/login", {
     method: "POST",
     body: JSON.stringify({
@@ -20,17 +25,51 @@ const login = async () => {
     }),
     headers: {
       "Content-type": "application/json",
+      Accept: "application/json",
     },
   });
   if (res.status === 200) {
-    const json = await res.json();
-    // let result = JSON.stringify(json);
-    const auth = localStorage.setItem("langon-auth", json.data.access_token);
-    checkAuth(console.log("joepie"));
-    goto("/");
-    console.log(json);
+    const parsed = await res.json();
+    localStorage.setItem("langon-auth", JSON.stringify(parsed.data));
+    const data_langon = jwt_decode(parsed.data.access_token);
+    console.log(data_langon);
+    const fetchUser = await fetch(
+      "http://localhost:8055/users/" +
+        data_langon.id +
+        "?fields=*id,first_name,last_name,email,role.name,role.id*",
+      {
+        headers: {
+          Authorization: "Bearer " + parsed.data.access_token,
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      }
+    );
+    console.log(fetchUser);
+    if (fetchUser.status === 200) {
+      const result = await fetchUser.json();
+      console.log(result);
+      localStorage.setItem("langon-user", JSON.stringify(result.data));
+      //redirect
+      goto("/");
+      console.log(result);
+    } else {
+      // als login niet succesvol is
+      const parsed = await fetchUser.json();
+      if (parsed.errors) {
+        errors = parsed;
+      } else {
+        errors = { errors: [{ message: "An unknown error has occurred." }] };
+      }
+    }
   } else {
-    errors = { errors: [{ message: "an unknown user" }] };
+    // als login niet succesvol is
+    const parsed = await res.json();
+    if (parsed.errors) {
+      errors = parsed;
+    } else {
+      errors = { errors: [{ message: "An unknown error has occurred." }] };
+    }
   }
 };
 </script>
@@ -54,14 +93,14 @@ const login = async () => {
         label="Password"
         placeholder="test123" />
     </div>
+    <div class="login_inputs_button">
+      <Button label="Sign up" on:click="{login}" />
+    </div>
     {#if errors}
       {#each errors.errors as error}
         <p>{error.message}</p>
       {/each}
     {/if}
-    <div class="login_inputs_button">
-      <Button label="Sign up" on:click="{login}" />
-    </div>
     <div class="login_inputs_rights">
       <p>© 2021 Langon. All rights reserved.</p>
       <p>Terms off conditions - Privacy policy.</p>

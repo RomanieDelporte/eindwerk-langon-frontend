@@ -14,7 +14,9 @@ export async function preload(page, session) {
 </script>
 
 <script>
-// import { goto } from "@sapper/app";
+import { goto } from "@sapper/app";
+import jwt_decode from "jwt-decode";
+
 import Button from "../components/Button.svelte";
 import Title from "../components/Title.svelte";
 import UserCard from "../components/UserCard.svelte";
@@ -50,7 +52,10 @@ export let users;
             We ensure smooth<br /> cooperation and <br /> professional translation
           </p>
           <div class="home_button">
-            <Button label="About us" isNormal="{true}" />
+            <Button
+              label="About us"
+              isNormal="{true}"
+              on:click="{() => goto('/about')}" />
           </div>
         </div>
         <div class="home_picture">

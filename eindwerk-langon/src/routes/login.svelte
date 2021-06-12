@@ -30,7 +30,7 @@ const login = async () => {
   });
   if (res.status === 200) {
     const parsed = await res.json();
-    localStorage.setItem("langon-auth", JSON.stringify(parsed.data));
+    localStorage.setItem("langon_auth", JSON.stringify(parsed.data));
     const data_langon = jwt_decode(parsed.data.access_token);
     console.log(data_langon);
     const fetchUser = await fetch(
@@ -45,30 +45,19 @@ const login = async () => {
         },
       }
     );
+
     console.log(fetchUser);
     if (fetchUser.status === 200) {
       const result = await fetchUser.json();
       console.log(result);
-      localStorage.setItem("langon-user", JSON.stringify(result.data));
+      localStorage.setItem("langon_user", JSON.stringify(result.data));
       //redirect
       goto("/");
       console.log(result);
     } else {
-      // als login niet succesvol is
-      const parsed = await fetchUser.json();
-      if (parsed.errors) {
-        errors = parsed;
-      } else {
-        errors = { errors: [{ message: "An unknown error has occurred." }] };
+      if (fetchUser.status !== 200) {
+        console.log("er is iets fout...");
       }
-    }
-  } else {
-    // als login niet succesvol is
-    const parsed = await res.json();
-    if (parsed.errors) {
-      errors = parsed;
-    } else {
-      errors = { errors: [{ message: "An unknown error has occurred." }] };
     }
   }
 };

@@ -21,13 +21,12 @@ let translation = [
   {
     id: "3",
     original: "jipla",
-    translation: "Is nog niet vertaald jammer",
+    translation: "Is nog niet vertaald",
   },
 ];
 
 const shownText = (id) => {
-  shown = !shown;
-  id;
+  shown = id;
 };
 
 console.log(translation);
@@ -48,8 +47,8 @@ console.log(translation);
         <tr class="translation_row">
           <td>{lat.id}</td>
           <td>{lat.original}</td>
-          {#if shown === true}
-            <td id="{lat.id}">
+          {#if shown === lat.id}
+            <td>
               <span class="canedit" id="{lat.id}"></span>
               <textarea
                 id="{lat.id}"
@@ -59,9 +58,23 @@ console.log(translation);
           {:else}
             <td>{lat.translation}</td>
           {/if}
-          <td>
-            <Button label="edit" on:click="{shownText}" />
-          </td>
+          {#if shown === lat.id}
+            <td>
+              <Button
+                ref="true"
+                label="Save"
+                on:click="{() => console.log('gesaved')}" />
+            </td>
+          {:else}
+            <td>
+              <Button
+                ref="true"
+                label="edit"
+                on:click="{() => {
+                  shownText(lat.id);
+                }}" />
+            </td>
+          {/if}
         </tr>
       {/each}
     </tbody>

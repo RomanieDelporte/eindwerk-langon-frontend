@@ -8,11 +8,12 @@ thead > tr {
 }  
   
   th:nth-child(2) {
-    width: 400px;
+    width: 300px;
   }
   th:nth-child(3) {
-    width: 400px;
+    width: 300px;
   }
+  
 
   th {
     padding: 1rem;
@@ -35,6 +36,5 @@ thead > tr {
       padding: 0.5rem;
     }
   }
-
 
 }

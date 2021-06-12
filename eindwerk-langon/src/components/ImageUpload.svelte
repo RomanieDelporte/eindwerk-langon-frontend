@@ -13,6 +13,18 @@ const FileSelected = (e) => {
     avatar = e.target.result;
   };
 };
+const image = async () => {
+  const res = await fetch("http://localhost:8055/auth/login", {
+    method: "GET",
+    body: JSON.stringify({
+      avatar: avatar,
+    }),
+    headers: {
+      "Content-type": "application/json",
+      Accept: "application/json",
+    },
+  });
+};
 </script>
 
 <div class="personal">

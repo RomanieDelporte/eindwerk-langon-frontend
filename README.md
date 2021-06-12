@@ -4,7 +4,7 @@ Een translation platform met i18next package. Als eindwerk heb ik een translatio
 # packages
 - [Svelte(sapper)](https://sapper.svelte.dev/)
 - [I18next](https://www.i18next.com/)
-- [apollo-server-express](https://github.com/RomanieDelporte/eindwerk-langon-backend) 
+- [Directus](https://github.com/RomanieDelporte/eindwerk-langon-directus) 
 
 
 

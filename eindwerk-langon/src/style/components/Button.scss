@@ -1,0 +1,27 @@
+@import "../theme.scss";
+
+.button {
+  button {
+    color: #ffffff;
+    background-color: $main-light;
+    border-radius: 10px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border: 1px solid $main-light;
+    outline: 0;
+    width: 100%;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .normal {
+    background-color: $accent-red;
+    border: 1px solid $accent-red;
+  }
+
+  .secondary {
+    background-color: $main-naturel;
+    color: #3d4655;
+  }
+
+}

@@ -1,0 +1,40 @@
+@import "../theme.scss";
+
+.translation {
+  
+  
+thead > tr {
+  background-color: $main-base;
+}  
+  
+  th:nth-child(2) {
+    width: 300px;
+  }
+  th:nth-child(3) {
+    width: 300px;
+  }
+  
+
+  th {
+    padding: 1rem;
+  }
+
+ 
+
+  &_items {
+    color: $main-naturel;
+    padding: 2rem;
+  }
+
+   textarea {
+    width: 100%;
+    border: 2px solid $ink-light;
+  }
+
+  &_row {
+    td {
+      padding: 0.5rem;
+    }
+  }
+
+}

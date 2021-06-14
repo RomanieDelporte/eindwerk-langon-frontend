@@ -1,0 +1,50 @@
+@import "../theme.scss";
+
+.usercard {
+  background-color: $ink-lighter;
+  display: flex;
+  width: 32vw;
+  padding-bottom: 12px;
+  border-right: 10px solid $accent-red;
+  justify-content: space-around;
+  margin: 10px;
+  
+
+  &_content {
+    // width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding: 1rem;
+
+  }
+
+  &_personal {
+    margin-left: 2px;
+    margin-top: 10px;
+  }
+
+  &_border {
+    border: 1px solid $accent-red;
+    margin-top: 10px;
+  }
+
+  .p-title {
+    color: $accent-red;
+  }
+
+  &_name , &_email{
+    line-height: 0.6;
+  }
+
+  &_email {
+    padding-top: 3px;
+  }
+}
+
+
+ @media only screen and (min-width: 1920px) {
+    .usercard {
+      width: 22vw;
+    }
+  }

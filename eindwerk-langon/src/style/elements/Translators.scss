@@ -1,0 +1,45 @@
+@import "../theme.scss";
+
+.translators {
+
+
+  &_input {
+    margin-top: 50px;
+  }
+
+  &_content {
+    background-color: $main-light;
+    width: 15vw;
+    height: 35vh;
+    padding: 0.5rem;
+
+    p {
+      color: $main-naturel;
+    }
+
+    p:nth-child(1) {
+      color: $main-base;
+    }
+
+    p:nth-child(3) {
+      color: $main-base;
+    }
+  }
+
+  &_language {
+    background-color: $ink-light;
+    width: 6vw;
+    padding: 0.3rem;
+
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+
+  &_add {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,69 @@
+@import '../theme.scss';
+
+.register {
+    display: flex;
+    font-family: $primary-font;
+
+
+    &_content {
+        background-color: $main-base;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &_logo {
+        color: $main-naturel;
+        font-family: $primary-font;
+        margin-left: 100px;
+
+
+        p {
+            margin-top: -2px;
+            margin-left: 1px;
+        }
+    }
+
+    &_inputs {
+        position: relative;
+        left: calc(100px + 20vw - 20vw);
+        margin-top: 100px;
+
+        &_names {
+            display: flex;
+            gap: 50px;
+        }
+
+
+        &_button {
+            margin-top: 30px;
+        }
+
+        &_rights {
+            display: flex;
+            margin-top: 70px;
+            font-family: $primary-font;
+           
+            p {
+                font-size: 14px;
+            }
+        }
+
+        &_rights p:nth-child(2) {
+            margin-left: 30px;
+        }
+    }
+
+    @media only screen and (min-width: 1920px) {
+        &_inputs {
+            margin-top: 150px;
+            
+            &_rights {
+            margin-top:200px;
+            }
+        }
+    }
+}

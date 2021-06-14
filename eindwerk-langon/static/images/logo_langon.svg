@@ -1,0 +1,30 @@
+<svg id="websitename" xmlns="http://www.w3.org/2000/svg" width="551" height="140" viewBox="0 0 551 140">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-size: 100px;
+        font-family: Poppins-SemiBold, Poppins;
+        font-weight: 600;
+      }
+
+      .cls-2 {
+        fill: #fd413c;
+        stroke: #fd413c;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <text id="Langon" class="cls-1"><tspan x="0" y="105">Langon</tspan></text>
+  <g id="Ellipse_19" data-name="Ellipse 19" class="cls-2" transform="translate(382 88)">
+    <circle class="cls-3" cx="12" cy="12" r="12"/>
+    <circle class="cls-4" cx="12" cy="12" r="11.5"/>
+  </g>
+</svg>

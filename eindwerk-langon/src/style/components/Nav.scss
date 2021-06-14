@@ -1,0 +1,112 @@
+@import "../theme.scss";
+
+.navigation {
+  background: $main-base;
+  height: 100vh;
+  position: sticky;
+  // width: 200px;
+  top: 0;
+  bottom: 0;
+  // left: 0;
+  // width: 230px;
+  display: flex;
+  flex-direction:column;
+
+
+
+  &_logo  {
+    margin-left: 10%;
+    margin-top: 10%;
+    img {
+      width: 250px;
+    }
+   
+  }
+
+  nav {
+    flex: 1;
+  }
+
+  &_items {
+    margin-top: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    display: block;
+    
+    li {
+      margin: 10px;
+      font-size: 20px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      text-decoration: none;
+      color: $main-naturel;
+      font-family: $primary-font;
+    }
+  }
+
+  &_items::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  &_logout {
+    background-color: $main-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  &_logout a {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: $secondary-font;
+    font-weight: bold;
+    color: $main-naturel;
+  }
+
+  [aria-current] {
+    position: relative;
+    display: inline-block;
+    background-color: $accent-red;
+    width: 94.9%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;;
+
+}
+
+&_info {
+  background-color: $accent-red;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: flex-end;
+  margin-left: 50%;
+  margin-bottom: 50px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  p {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border: 2px solid $main-naturel;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    color: $main-naturel;
+    // font-weight: bold;
+  }
+}
+
+
+}

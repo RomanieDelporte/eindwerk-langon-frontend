@@ -6,6 +6,18 @@
 import Button from "./Button.svelte";
 export let segment;
 let page;
+import { onMount } from "svelte";
+import { checkAuth } from "../routes/auth";
+
+let isAdmin = false;
+
+onMount(async () => {
+  try {
+    isAdmin = await checkAuth(["Administrator"]);
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <aside class="navigation">
@@ -14,20 +26,24 @@ let page;
   </div>
   <nav>
     <ul class="navigation_items">
-      <li>
-        <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
-          >Home</a>
-      </li>
-      <li>
-        <a
-          aria-current="{segment === 'originals' ? 'page' : undefined}"
-          href="originals">Originals</a>
-      </li>
+      {#if isAdmin !== false}
+        <li>
+          <a
+            aria-current="{segment === undefined ? 'page' : undefined}"
+            href=".">Home</a>
+        </li>
+        <li>
+          <a
+            aria-current="{segment === 'originals' ? 'page' : undefined}"
+            href="originals">Originals</a>
+        </li>
+      {/if}
       <li>
         <a
           aria-current="{segment === 'translations' ? 'page' : undefined}"
           href="translations">Translations</a>
       </li>
+
       <li>
         <a
           rel="prefetch"

@@ -28,18 +28,20 @@ export function checkAuth(roles = []) {
     }
 
     // expires check
-    const expires = new Date(parsedToken.exp);
+    const expires = new Date(parsedToken.exp*1000);
     const now = new Date();
+    console.log(1);
     if(expires < now ) {
       //refresh token
-      const response = await fetch("http://localhost:8055/auth/refresh", {
+      console.log(1);
+      const response = await fetch("https://langon.josdeberdt.be/auth/refresh", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         }, 
         body : JSON.stringify({"refresh_token": tokens.refresh_token}),
       });
-
+      console.log(1);
       // als refresh succesvol is 
       if(response.status === 200) {
         const parsed = await response.json();
@@ -50,7 +52,7 @@ export function checkAuth(roles = []) {
         console.log(data_langon);
         //fetch users details en rol
         const fetchUser = await fetch(
-          "http://localhost:8055/users/" + data_langon.id +"?fields=*id,first_name,last_name,email,role.name,role.id*",
+          "https://langon.josdeberdt.be/users/" + data_langon.id +"?fields=*id,first_name,last_name,email,role.name,role.id*",
           {
             method: "GET",
             headers: {
@@ -60,6 +62,7 @@ export function checkAuth(roles = []) {
  
             },
           });
+          console.log(1);
           if(fetchUser.status === 200) {
             const user = await fetchUser.json();
             // set user details in localstorage
@@ -70,26 +73,29 @@ export function checkAuth(roles = []) {
           } 
       } else {
         error = true 
-      }
-
+          }
+      console.log(userDetails);
+      console.log(roles)
       // role check
-      if(roles.indexOf(userDetails.role.name) === -1) {
-        error = true;
-      }
-      if(error === true) {
-        localStorage.removeItem('langon_auth');
-        localStorage.removeItem('langon_user');
-        reject(false)
-        goto("/login");
-        
-      } else {
-        resolve({
-          authenticated: true,
-          user: userDetails,
-          tokens: parsedToken,
-        })
-      }
-    } } catch(err) {
+      
+    }
+    if(roles.indexOf(userDetails.role.name) === -1) {
+      error = true;
+    }
+    if(error === true) {
+      localStorage.removeItem('langon_auth');
+      localStorage.removeItem('langon_user');
+      reject(false)
+      goto("/login");
+      
+    } else {
+      resolve({
+        authenticated: true,
+        user: userDetails,
+        tokens: tokens,
+      })
+    }
+  } catch(err) {
       console.log(err)
       reject(false)
     }

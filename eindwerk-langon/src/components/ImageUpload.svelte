@@ -14,7 +14,7 @@ const FileSelected = (e) => {
   };
 };
 const image = async () => {
-  const res = await fetch("http://localhost:8055/auth/login", {
+  const res = await fetch("https://langon.josdeberdt.be/auth/login", {
     method: "GET",
     body: JSON.stringify({
       avatar: avatar,

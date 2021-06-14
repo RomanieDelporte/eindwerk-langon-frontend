@@ -17,7 +17,7 @@ let errors;
 
 const login = async () => {
   //login bij directus
-  const res = await fetch("http://localhost:8055/auth/login", {
+  const res = await fetch("https://langon.josdeberdt.be/auth/login", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -34,9 +34,9 @@ const login = async () => {
     const data_langon = jwt_decode(parsed.data.access_token);
     console.log(data_langon);
     const fetchUser = await fetch(
-      "http://localhost:8055/users/" +
+      "https://langon.josdeberdt.be/users/" +
         data_langon.id +
-        "?fields=*id,first_name,last_name,email,role.name,role.id*",
+        "?fields=id,first_name,last_name,email,role.name,role.id",
       {
         headers: {
           Authorization: "Bearer " + parsed.data.access_token,

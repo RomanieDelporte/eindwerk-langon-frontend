@@ -9,15 +9,15 @@ let page;
 import { onMount } from "svelte";
 import { checkAuth } from "../routes/auth";
 
-let isAdmin = false;
+// let isAdmin = false;
 
-onMount(async () => {
-  try {
-    isAdmin = await checkAuth(["Administrator"]);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// onMount(async () => {
+//   try {
+//     isAdmin = await checkAuth(["Administrator"]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 </script>
 
 <aside class="navigation">
@@ -26,7 +26,7 @@ onMount(async () => {
   </div>
   <nav>
     <ul class="navigation_items">
-      {#if isAdmin !== false}
+      <!-- {#if isAdmin !== false} -->
         <li>
           <a
             aria-current="{segment === undefined ? 'page' : undefined}"
@@ -37,7 +37,7 @@ onMount(async () => {
             aria-current="{segment === 'originals' ? 'page' : undefined}"
             href="originals">Originals</a>
         </li>
-      {/if}
+      <!-- {/if} -->
       <li>
         <a
           aria-current="{segment === 'translations' ? 'page' : undefined}"

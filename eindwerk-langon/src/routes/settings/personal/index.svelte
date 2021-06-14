@@ -4,7 +4,7 @@
 
 <!-- <script context="module">
 export async function preload(page, session) {
-  const result = await this.fetch("http://localhost:8055/users/me", {
+  const result = await this.fetch("https://langon.josdeberdt.be/users/me", {
     headers: {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiNWI1NzQ2LWNhNGItNGY0MS1iYzQyLTE1NGFkNDRkZTJmYiIsImlhdCI6MTYyMzUzNzg3OSwiZXhwIjoxNjIzNTM4Nzc5fQ.0BXf2sX7hguUiXdXiGXA6LvMrTQDHAj2SQCOJZivH8s ",

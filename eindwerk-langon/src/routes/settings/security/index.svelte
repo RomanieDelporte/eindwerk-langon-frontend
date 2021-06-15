@@ -1,11 +1,11 @@
 <style lang="scss">
-@import "../../../style/elements/Security.scss";
+  @import "../../../style/elements/Security.scss";
 </style>
 
 <script>
-import Button from "../../../components/Button.svelte";
-import Inputfield from "../../../components/Inputfield.svelte";
-import Title from "../../../components/Title.svelte";
+  import Button from "../../../components/Button.svelte";
+  import Inputfield from "../../../components/Inputfield.svelte";
+  import Title from "../../../components/Title.svelte";
 </script>
 
 <div class="security marginSet">

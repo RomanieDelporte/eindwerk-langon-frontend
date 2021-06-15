@@ -4,33 +4,55 @@
 
 <script>
 import Title from "../../../components/Title.svelte";
-import { XIcon, PlusCircleIcon } from "svelte-feather-icons";
+import { XIcon } from "svelte-feather-icons";
 
-const translators = [
-  { id: 1, translator: "Max Doe", Languages: "Dutch" },
-  { id: 2, translator: "Dirk Doe", Languages: "Dutch" },
-];
+import { checkAuth } from "../../auth.js";
+import { onMount } from "svelte";
+
+let isAuth = false;
+onMount(async () => {
+  try {
+    isAuth = await checkAuth(["Administrator"]);
+    console.log(isAuth);
+    const result = await fetch("https://langon.josdeberdt.be/items/users", {
+      headers: {
+        Authorization: "Bearer " + isAuth.tokens.access_token,
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+    });
+
+    let usersObject = await result.json();
+    translators = usersObject;
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+export let translators;
 </script>
 
-<div class="translators marginSet">
-  <Title text="Your Settings" />
-  <div class="translators_translator">
-    <p>All the translators with their assigned languages</p>
-    <div class="translators_input placeInput">
-      {#each translators as translator}
-        <div class="translators_content borderline">
-          <p>Translator:</p>
-          <p>{translator.translator}</p>
-          <p>languages:</p>
-          <p class="translators_language borderline">
-            {translator.Languages}
-            <XIcon size="15" />
-          </p>
-          <div class="translators_add">
-            <PlusCircleIcon size="34" />
-          </div>
-        </div>
-      {/each}
+{#if isAuth !== false}
+  <div class="translators marginSet">
+    <Title text="Your Settings" />
+    <div class="translators_translator">
+      <p>All the translators with their assigned languages</p>
+      <div class="translators_input placeInput">
+        {#if translators}
+          {#each translators.data as translator}
+            <div class="translators_content borderline">
+              <p>Translator:</p>
+              <p>{translator.firstname} {translator.lastname}</p>
+              <p>Language</p>
+              <p>{translator.email}</p>
+              <p class="translators_language borderline">
+                french
+                <XIcon size="15" />
+              </p>
+            </div>
+          {/each}
+        {/if}
+      </div>
     </div>
   </div>
-</div>
+{/if}

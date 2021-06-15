@@ -8,15 +8,12 @@
   border-right: 10px solid $accent-red;
   justify-content: space-around;
   margin: 10px;
-  
+
 
   &_content {
-    // width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
-    // padding: 1rem;
-
   }
 
   &_personal {
@@ -33,7 +30,8 @@
     color: $accent-red;
   }
 
-  &_name , &_email{
+  &_name,
+  &_email {
     line-height: 0.6;
   }
 
@@ -43,8 +41,8 @@
 }
 
 
- @media only screen and (min-width: 1920px) {
-    .usercard {
-      width: 22vw;
-    }
+@media only screen and (min-width: 1920px) {
+  .usercard {
+    width: 22vw;
   }
+}

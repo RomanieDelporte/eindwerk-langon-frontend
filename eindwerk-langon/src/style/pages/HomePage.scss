@@ -2,73 +2,6 @@
 
 .home {
   font-family: $primary-font;
-  
-  // @media only screen and (min-width: 1520px) {
-  //   &_title {
-  //     img {
-  //       margin-top: -3%;
-  //     }
-  //   }
-  // }
-
-  // @media only screen and (min-width: 1620px) {
-  //   &_title {
-  //     img {
-  //       margin-top: -2.5%;
-  //     }
-  //   }
-  // }
-
-  // @media only screen and (min-width: 1720px) {
-  //   &_title {
-  //     h1 {
-  //       font-size: 50px;
-  //       margin-top: -1%;
-  //     }
-
-  //     img {
-  //       margin-top: -5%;
-  //       width: 250px;
-
-  //     }
-  //   }
-
-  //   &_firstname h1 {
-  //     font-size: 50px;
-  //   }
-
-  //   &_text {
-  //     font-size: 20px;
-  //   }
-
-  //   &_picture {
-  //     img {
-  //       width: 500px;
-  //     }
-  //   }
-  // }
-
-  // &_users {
-  //   font-family: $secondary-font;
-  // }
-
-  
-
-}
-
-
-// .buttons {
-//   display: flex; 
-//   justify-content: flex-end;
-// }
-
-// :global([ref=margin]) {
-//   margin-right: 15px;
-// }
-
-
-
-.home {
   display: flex;
 
   &_intro {
@@ -76,6 +9,7 @@
       font-weight: 300;
     }
   }
+
   &_button {
     width: 10vw;
   }
@@ -92,6 +26,6 @@
   &_usercard {
     margin-top: 50px;
     display: flex;
-    
+
   }
 }

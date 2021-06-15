@@ -1,30 +1,30 @@
 <style lang="scss">
-@import "../style/components/ImageUpload.scss";
+  @import "../style/components/ImageUpload.scss";
 </style>
 
 <script>
-let avatar, fileinput;
+  let avatar, fileinput;
 
-const FileSelected = (e) => {
-  let image = e.target.files[0];
-  let reader = new FileReader();
-  reader.readAsDataURL(image);
-  reader.onload = (e) => {
-    avatar = e.target.result;
+  const FileSelected = (e) => {
+    let image = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onload = (e) => {
+      avatar = e.target.result;
+    };
   };
-};
-const image = async () => {
-  const res = await fetch("https://langon.josdeberdt.be/auth/login", {
-    method: "GET",
-    body: JSON.stringify({
-      avatar: avatar,
-    }),
-    headers: {
-      "Content-type": "application/json",
-      Accept: "application/json",
-    },
-  });
-};
+  const image = async () => {
+    const res = await fetch("https://langon.josdeberdt.be/auth/login", {
+      method: "GET",
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+    });
+  };
 </script>
 
 <div class="personal">

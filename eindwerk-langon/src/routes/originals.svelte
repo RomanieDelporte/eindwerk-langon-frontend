@@ -4,12 +4,12 @@
 
 <script>
   import Title from "../components/Title.svelte";
-  import TranslationTable from "../components/TranslationTable.svelte";
+  import OriginalTable from "../components/OriginalTable.svelte";
 </script>
 
 <div class="p-pages">
-  <Title text="Translations" />
+  <Title text="Originals" />
   <div class="table">
-    <TranslationTable />
+    <OriginalTable />
   </div>
 </div>

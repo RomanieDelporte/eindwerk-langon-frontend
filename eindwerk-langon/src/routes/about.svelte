@@ -1,11 +1,10 @@
+<style lang="scss">
+@import "../style/pages/AboutPage.scss";
+</style>
 
 <script>
 import { WatchIcon, GlobeIcon, UsersIcon } from "svelte-feather-icons";
 </script>
-
-<style lang="scss">
-  @import "../style/pages/AboutPage.scss";
-  </style>
 
 <svelte:head>
   <title>About</title>

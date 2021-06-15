@@ -1,8 +1,8 @@
 @import "../theme.scss";
 
-.translation {
+.original {
 
-  thead>tr {
+  thead > tr {
     background-color: $main-base;
   }
 
@@ -15,20 +15,12 @@
   }
 
 
-  th {
-    padding: 1rem;
-  }
-
-
-
   &_items {
     color: $main-naturel;
-    padding: 2rem;
-  }
 
-  textarea {
-    width: 100%;
-    border: 2px solid $ink-light;
+    th {
+      padding: 1rem;
+    }
   }
 
   &_row {
@@ -36,5 +28,4 @@
       padding: 0.5rem;
     }
   }
-
 }

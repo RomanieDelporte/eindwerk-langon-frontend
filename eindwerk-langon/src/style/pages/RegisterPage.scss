@@ -46,7 +46,7 @@
             display: flex;
             margin-top: 70px;
             font-family: $primary-font;
-           
+
             p {
                 font-size: 14px;
             }
@@ -60,9 +60,9 @@
     @media only screen and (min-width: 1920px) {
         &_inputs {
             margin-top: 150px;
-            
+
             &_rights {
-            margin-top:200px;
+                margin-top: 200px;
             }
         }
     }

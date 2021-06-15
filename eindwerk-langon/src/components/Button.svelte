@@ -1,12 +1,12 @@
 <style lang="scss">
-@import "../style/components/Button.scss";
+  @import "../style/components/Button.scss";
 </style>
 
 <script>
-export let label;
-export let isNormal = false;
-export let isSecondary = false;
-export let ref;
+  export let label;
+  export let isNormal = false;
+  export let isSecondary = false;
+  export let ref;
 </script>
 
 <div ref="{ref}" class="button">

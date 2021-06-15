@@ -4,14 +4,12 @@
 
 <script>
 import Title from "../../../components/Title.svelte";
-import { XIcon, PlusCircleIcon } from "svelte-feather-icons";
+import { XIcon } from "svelte-feather-icons";
 
 import { checkAuth } from "../../auth.js";
 import { onMount } from "svelte";
 
-// deze var checkt of de gebruiker iets mag zien, vooraleer iets te tonen
 let isAuth = false;
-//pas nadat de pagina gemount is, mag de checkauth functie lopen. anders is localstorage niet beschikbaar.
 onMount(async () => {
   try {
     isAuth = await checkAuth(["Administrator"]);
@@ -26,8 +24,6 @@ onMount(async () => {
 
     let usersObject = await result.json();
     translators = usersObject;
-    console.log(usersObject);
-    console.log(isAuth);
   } catch (err) {
     console.log(err);
   }

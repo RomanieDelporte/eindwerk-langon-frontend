@@ -5,7 +5,6 @@
 <script>
 export let label;
 export let placeholder;
-// export let type;
 export let value;
 </script>
 

@@ -1,11 +1,11 @@
 <style lang="scss">
-@import "../style/components/ModalLanguage.scss";
+  @import "../style/components/ModalLanguage.scss";
 </style>
 
 <script>
-export let title;
-export let text;
-export let showModal = false;
+  export let title;
+  export let text;
+  export let showModal = false;
 </script>
 
 {#if showModal}

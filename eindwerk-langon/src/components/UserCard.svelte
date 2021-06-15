@@ -1,11 +1,11 @@
 <style lang="scss">
-@import "../style/components/UserCard.scss";
+  @import "../style/components/UserCard.scss";
 </style>
 
 <script>
-export let firstname;
-export let lastname;
-export let email;
+  export let firstname;
+  export let lastname;
+  export let email;
 </script>
 
 <div class="usercard borderline">

@@ -1,7 +1,11 @@
+<style lang="scss">
+@import "../style/pages/RegisterPage.scss";
+</style>
+
 <script>
-  import { goto } from "@sapper/app";
-  import Button from "../components/Button.svelte";
-  import Inputfield from "../components/Inputfield.svelte";
+import { goto } from "@sapper/app";
+import Button from "../components/Button.svelte";
+import Inputfield from "../components/Inputfield.svelte";
 </script>
 
 <div class="register">
@@ -21,18 +25,16 @@
       <Inputfield
         type="email"
         label="Email Adress*"
-        placeholder="romaniedelporte230@gmail.com"
-      />
+        placeholder="romaniedelporte230@gmail.com" />
     </div>
     <div class="register_inputs_password">
       <Inputfield
         type="password"
         label="Create your password*"
-        placeholder="test123"
-      />
+        placeholder="test123" />
     </div>
     <div class="register_inputs_button">
-      <Button label="Sign up" on:click={() => goto("/login")} />
+      <Button label="Sign up" on:click="{() => goto('/login')}" />
       <p>Already sign in? <a href="register">Sign up</a></p>
     </div>
     <div class="register_inputs_rights">
@@ -41,7 +43,3 @@
     </div>
   </div>
 </div>
-
-<style lang="scss">
-  @import "../style/pages/RegisterPage.scss";
-</style>

@@ -1,62 +1,44 @@
 <style lang="scss">
-@import "../style/components/TranslationTable.scss";
+  @import "../style/components/TranslationTable.scss";
 </style>
 
 <script>
-import Button from "./Button.svelte";
-let shown = false;
+  import Button from "./Button.svelte";
+  let shown = false;
 
-let id = null;
-// let translation = [
-//   {
-//     id: "1",
-//     original: "Hello",
-//     translation: "Is nog niet vertaald",
-//   },
-//   {
-//     id: "2",
-//     original: "heyhey",
-//     translation: "Is nog niet vertaald",
-//   },
-//   {
-//     id: "3",
-//     original: "jipla",
-//     translation: "Is nog niet vertaald",
-//   },
-// ];
-import { onMount } from "svelte";
-import { checkAuth } from "../routes/auth.js";
+  import {
+    onMount
+  } from "svelte";
+  import {
+    checkAuth
+  } from "../routes/auth.js";
 
-let isAuth = false;
-onMount(async () => {
-  try {
-    isAuth = await checkAuth(["Administrator", "Translators"]);
-    const result = await fetch(
-      "https://langon.josdeberdt.be/items/translations?fields=id,translation,language_id.language,original_id.original",
-      {
-        headers: {
-          Authorization: "Bearer " + isAuth.tokens.access_token,
-          Accept: "application/json",
-          "Content-type": "application/json",
-        },
-      }
-    );
+  let isAuth = false;
+  onMount(async () => {
+    try {
+      isAuth = await checkAuth(["Administrator", "Translators"]);
+      const result = await fetch(
+        "https://langon.josdeberdt.be/items/translations?fields=id,translation,language_id.language,original_id.id,original_id.original", {
+          headers: {
+            Authorization: "Bearer " + isAuth.tokens.access_token,
+            Accept: "application/json",
+            "Content-type": "application/json",
+          },
+        }
+      );
 
-    const translations = await result.json();
-    translate = translations.data;
-    console.log(translations);
-  } catch (error) {
-    console.log(error);
-  }
-});
+      const translations = await result.json();
+      translate = translations.data;
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-const shownText = (id) => {
-  shown = id;
-};
+  const shownText = (id) => {
+    shown = id;
+  };
 
-export let translate;
-
-// console.log(translation);
+  export let translate;
 </script>
 
 {#if isAuth !== false}

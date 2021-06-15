@@ -1,43 +1,35 @@
 <style lang="scss">
-@import "../style/components/OriginalTable.scss";
+  @import "../style/components/OriginalTable.scss";
 </style>
 
 <script>
-import Button from "./Button.svelte";
-let shown = false;
+  import {
+    onMount
+  } from "svelte";
+  import {
+    checkAuth
+  } from "../routes/auth.js";
 
-let id = null;
+  let isAuth = false;
+  onMount(async () => {
+    try {
+      isAuth = await checkAuth(["Administrator", "Translators"]);
+      const result = await fetch("https://langon.josdeberdt.be/items/originals", {
+        headers: {
+          Authorization: "Bearer " + isAuth.tokens.access_token,
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      });
 
-import { onMount } from "svelte";
-import { checkAuth } from "../routes/auth.js";
+      const originals = await result.json();
+      original = originals.data;
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-let isAuth = false;
-onMount(async () => {
-  try {
-    isAuth = await checkAuth(["Administrator", "Translators"]);
-    const result = await fetch("https://langon.josdeberdt.be/items/originals?fields=languages", {
-      headers: {
-        Authorization: "Bearer " + isAuth.tokens.access_token,
-        Accept: "application/json",
-        "Content-type": "application/json",
-      },
-    });
-
-    const originals = await result.json();
-    original = originals.data;
-    console.log(originals);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-const shownText = (id) => {
-  shown = id;
-};
-
-export let original;
-
-// console.log(translation);
+  export let original;
 </script>
 
 {#if isAuth !== false}

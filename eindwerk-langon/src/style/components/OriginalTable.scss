@@ -14,7 +14,18 @@
     width: 300px;
   }
 
+
   &_items {
     color: $main-naturel;
+
+    th {
+      padding: 1rem;
+    }
+  }
+
+  &_row {
+    td {
+      padding: 0.5rem;
+    }
   }
 }

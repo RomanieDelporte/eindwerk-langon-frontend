@@ -3,15 +3,12 @@
 // hier is het zonder variabelen omdat de package dit niet toelaat
 .dropdown {
   --borderRadius: 10px;
-  --placeholderColor: #bfc5c6; 
-  width: 400px;
+  --placeholderColor: #bfc5c6;
   --clearSelectWidth: 40px;
   --borderFocusColor: #bfc5c6;
   --itemHoverBG: #657186;
   --itemIsActiveColor: #FFF;
   --itemIsActiveBG: #657186;
-  margin-bottom:40px;
-
-
-
+  margin-bottom: 40px;
+  width: 400px;
 }

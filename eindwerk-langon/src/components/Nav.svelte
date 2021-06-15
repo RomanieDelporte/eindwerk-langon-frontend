@@ -1,24 +1,29 @@
 <style lang="scss">
-@import "../style/components/Nav.scss";
+  @import "../style/components/Nav.scss";
 </style>
 
 <script>
-import Button from "./Button.svelte";
-export let segment;
-let page;
-import { onMount } from "svelte";
-import { checkAuth } from "../routes/auth";
-// let isTranslator = false;
-// // let isAdmin = false;
+  import {
+    goto
+  } from "@sapper/app";
+  export let segment;
+  import {
+    onMount
+  } from "svelte";
+  import {
+    checkAuth
+  } from "../routes/auth";
+  let isTranslator = false;
+  let page;
 
-// onMount(async () => {
-//   try {
-//     isTranslator = await checkAuth(["Administrator", "Translators"]);
-//     console.log(isTranslator);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+  onMount(async () => {
+    try {
+      isTranslator = await checkAuth(["Administrator", "Translators"]);
+      console.log(isTranslator);
+    } catch (error) {
+      console.log(error);
+    }
+  });
 </script>
 
 <aside class="navigation">
@@ -27,33 +32,29 @@ import { checkAuth } from "../routes/auth";
   </div>
   <nav>
     <ul class="navigation_items">
-      <!-- {#if isTranslator !== false} -->
       <li>
-        <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
-          >Home</a>
+        <a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Home</a>
       </li>
       <li>
-        <a
-          aria-current="{segment === 'originals' ? 'page' : undefined}"
-          href="originals">Originals</a>
+        <a aria-current="{segment === 'originals' ? 'page' : undefined}" href="originals">Originals</a>
       </li>
-      <!-- {/if} -->
       <li>
-        <a
-          aria-current="{segment === 'translations' ? 'page' : undefined}"
-          href="translations">Translations</a>
+        <a aria-current="{segment === 'translations' ? 'page' : undefined}" href="translations">Translations</a>
       </li>
-      <!-- {/if} -->
-      <li>
-        <a
-          rel="prefetch"
-          aria-current="{segment === 'settings' ? 'page' : undefined}"
-          href="settings/personal">Settings</a>
-      </li>
+      {#if isTranslator !== false}
+        {#if isTranslator.user.role.name === "Administrator"}
+          <li>
+            <a
+              rel="prefetch"
+              aria-current="{segment === 'settings' ? 'page' : undefined}"
+              href="settings/personal">Settings</a>
+          </li>
+        {/if}
+      {/if}
     </ul>
   </nav>
   <div class="navigation_info">
-    <p on:click="{() => console.log('test')}">?</p>
+    <p on:click="{() => goto('/about')}">?</p>
   </div>
   <div class="navigation_logout">
     <a href="/login">Afmelden</a>

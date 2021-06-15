@@ -1,9 +1,9 @@
 <style lang="scss">
-@import "../style/components/Title.scss";
+  @import "../style/components/Title.scss";
 </style>
 
 <script>
-export let text;
+  export let text;
 </script>
 
 <div class="title">

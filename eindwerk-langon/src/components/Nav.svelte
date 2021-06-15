@@ -1,29 +1,23 @@
 <style lang="scss">
-  @import "../style/components/Nav.scss";
+@import "../style/components/Nav.scss";
 </style>
 
 <script>
-  import {
-    goto
-  } from "@sapper/app";
-  export let segment;
-  import {
-    onMount
-  } from "svelte";
-  import {
-    checkAuth
-  } from "../routes/auth";
-  let isTranslator = false;
-  let page;
+import { goto } from "@sapper/app";
+export let segment;
+import { onMount } from "svelte";
+import { checkAuth } from "../routes/auth";
+let isTranslator = false;
+let page;
 
-  onMount(async () => {
-    try {
-      isTranslator = await checkAuth(["Administrator", "Translators"]);
-      console.log(isTranslator);
-    } catch (error) {
-      console.log(error);
-    }
-  });
+onMount(async () => {
+  try {
+    isTranslator = await checkAuth(["Administrator", "Translators"]);
+    console.log(isTranslator);
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <aside class="navigation">
@@ -33,13 +27,18 @@
   <nav>
     <ul class="navigation_items">
       <li>
-        <a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Home</a>
+        <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
+          >Home</a>
       </li>
       <li>
-        <a aria-current="{segment === 'originals' ? 'page' : undefined}" href="originals">Originals</a>
+        <a
+          aria-current="{segment === 'originals' ? 'page' : undefined}"
+          href="originals">Originals</a>
       </li>
       <li>
-        <a aria-current="{segment === 'translations' ? 'page' : undefined}" href="translations">Translations</a>
+        <a
+          aria-current="{segment === 'translations' ? 'page' : undefined}"
+          href="translations">Translations</a>
       </li>
       {#if isTranslator !== false}
         {#if isTranslator.user.role.name === "Administrator"}

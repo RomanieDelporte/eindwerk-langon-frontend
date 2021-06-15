@@ -16,11 +16,18 @@
       color: $main-naturel;
     }
 
+    p:nth-child(2) {
+      margin-top: -20px;
+    }
+    p:nth-child(3) {
+      margin-top: -5px;
+    }
+
     p:nth-child(1) {
       color: $main-base;
     }
 
-    p:nth-child(3) {
+    p:nth-child(4) {
       color: $main-base;
     }
   }

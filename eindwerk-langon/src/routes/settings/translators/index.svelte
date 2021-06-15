@@ -43,8 +43,8 @@ export let translators;
             <div class="translators_content borderline">
               <p>Translator:</p>
               <p>{translator.firstname} {translator.lastname}</p>
-              <p>Language</p>
               <p>{translator.email}</p>
+              <p>Language</p>
               <p class="translators_language borderline">
                 french
                 <XIcon size="15" />

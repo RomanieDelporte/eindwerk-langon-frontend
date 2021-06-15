@@ -33,6 +33,8 @@ onMount(async () => {
 
     let usersObject = await result.json();
     users = usersObject;
+    console.log(usersObject);
+    console.log(isAuth);
   } catch (err) {
     console.log(err);
   }
@@ -69,16 +71,16 @@ export let users;
         <Title text="Users" />
         <div class="home_usercard">
           {#if users}
-          {#each users.data as user}
-            <UserCard
-              firstname="{user.firstname}"
-              lastname="{user.lastname}"
-              email="{user.email}">
-              <ImageUpload />
-            </UserCard>
-          {:else}
-            <p>loading...</p>
-          {/each}
+            {#each users.data as user}
+              <UserCard
+                firstname="{user.firstname}"
+                lastname="{user.lastname}"
+                email="{user.email}">
+                <ImageUpload />
+              </UserCard>
+            {:else}
+              <p>loading...</p>
+            {/each}
           {/if}
         </div>
       </div>

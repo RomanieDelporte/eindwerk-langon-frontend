@@ -33,7 +33,6 @@ export function checkAuth(roles = []) {
     console.log(1);
     if(expires < now ) {
       //refresh token
-      console.log(1);
       const response = await fetch("https://langon.josdeberdt.be/auth/refresh", {
         method: "POST",
         headers: {
@@ -41,7 +40,6 @@ export function checkAuth(roles = []) {
         }, 
         body : JSON.stringify({"refresh_token": tokens.refresh_token}),
       });
-      console.log(1);
       // als refresh succesvol is 
       if(response.status === 200) {
         const parsed = await response.json();
@@ -62,7 +60,6 @@ export function checkAuth(roles = []) {
  
             },
           });
-          console.log(1);
           if(fetchUser.status === 200) {
             const user = await fetchUser.json();
             // set user details in localstorage

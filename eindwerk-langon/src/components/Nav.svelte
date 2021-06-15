@@ -8,12 +8,13 @@ export let segment;
 let page;
 import { onMount } from "svelte";
 import { checkAuth } from "../routes/auth";
-
-// let isAdmin = false;
+// let isTranslator = false;
+// // let isAdmin = false;
 
 // onMount(async () => {
 //   try {
-//     isAdmin = await checkAuth(["Administrator"]);
+//     isTranslator = await checkAuth(["Administrator", "Translators"]);
+//     console.log(isTranslator);
 //   } catch (error) {
 //     console.log(error);
 //   }
@@ -26,24 +27,23 @@ import { checkAuth } from "../routes/auth";
   </div>
   <nav>
     <ul class="navigation_items">
-      <!-- {#if isAdmin !== false} -->
-        <li>
-          <a
-            aria-current="{segment === undefined ? 'page' : undefined}"
-            href=".">Home</a>
-        </li>
-        <li>
-          <a
-            aria-current="{segment === 'originals' ? 'page' : undefined}"
-            href="originals">Originals</a>
-        </li>
+      <!-- {#if isTranslator !== false} -->
+      <li>
+        <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
+          >Home</a>
+      </li>
+      <li>
+        <a
+          aria-current="{segment === 'originals' ? 'page' : undefined}"
+          href="originals">Originals</a>
+      </li>
       <!-- {/if} -->
       <li>
         <a
           aria-current="{segment === 'translations' ? 'page' : undefined}"
           href="translations">Translations</a>
       </li>
-
+      <!-- {/if} -->
       <li>
         <a
           rel="prefetch"

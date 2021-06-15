@@ -7,76 +7,107 @@ import Button from "./Button.svelte";
 let shown = false;
 
 let id = null;
-let translation = [
-  {
-    id: "1",
-    original: "Hello",
-    translation: "Is nog niet vertaald",
-  },
-  {
-    id: "2",
-    original: "heyhey",
-    translation: "Is nog niet vertaald",
-  },
-  {
-    id: "3",
-    original: "jipla",
-    translation: "Is nog niet vertaald",
-  },
-];
+// let translation = [
+//   {
+//     id: "1",
+//     original: "Hello",
+//     translation: "Is nog niet vertaald",
+//   },
+//   {
+//     id: "2",
+//     original: "heyhey",
+//     translation: "Is nog niet vertaald",
+//   },
+//   {
+//     id: "3",
+//     original: "jipla",
+//     translation: "Is nog niet vertaald",
+//   },
+// ];
+import { onMount } from "svelte";
+import { checkAuth } from "../routes/auth.js";
+
+let isAuth = false;
+onMount(async () => {
+  try {
+    isAuth = await checkAuth(["Administrator", "Translators"]);
+    const result = await fetch(
+      "https://langon.josdeberdt.be/items/translations?fields=id,translation,language_id.language,original_id.original",
+      {
+        headers: {
+          Authorization: "Bearer " + isAuth.tokens.access_token,
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      }
+    );
+
+    const translations = await result.json();
+    translate = translations.data;
+    console.log(translations);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const shownText = (id) => {
   shown = id;
 };
 
-console.log(translation);
+export let translate;
+
+// console.log(translation);
 </script>
 
-<section class="table">
-  <table class="translation borderline">
-    <thead>
-      <tr class="translation_items">
-        <th>ID</th>
-        <th>Original</th>
-        <th>Translation</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each translation as lat (lat.id)}
-        <tr class="translation_row">
-          <td>{lat.id}</td>
-          <td>{lat.original}</td>
-          {#if shown === lat.id}
-            <td>
-              <span class="canedit" id="{lat.id}"></span>
-              <textarea
-                id="{lat.id}"
-                class="translation_textarea"
-                shown="{shown}"></textarea>
-            </td>
-          {:else}
-            <td>{lat.translation}</td>
-          {/if}
-          {#if shown === lat.id}
-            <td>
-              <Button
-                ref="true"
-                label="Save"
-                on:click="{() => console.log('gesaved')}" />
-            </td>
-          {:else}
-            <td>
-              <Button
-                ref="true"
-                label="edit"
-                on:click="{() => {
-                  shownText(lat.id);
-                }}" />
-            </td>
-          {/if}
+{#if isAuth !== false}
+  <section class="table">
+    <table class="translation borderline">
+      <thead>
+        <tr class="translation_items">
+          <th>ID</th>
+          <th>Original</th>
+          <th>Translation</th>
+          <th>Action</th>
         </tr>
-      {/each}
-    </tbody>
-  </table>
-</section>
+      </thead>
+      {#if translate}
+        <tbody>
+          {#each translate as lat (lat.id)}
+            <tr class="translation_row">
+              <td>{lat.id}</td>
+              <td>{lat.original_id.original}</td>
+              {#if shown === lat.id}
+                <td>
+                  <span class="canedit" id="{lat.id}"></span>
+                  <textarea
+                    id="{lat.id}"
+                    class="translation_textarea"
+                    shown="{shown}"></textarea>
+                </td>
+              {:else}
+                <td>{lat.translation}</td>
+              {/if}
+              {#if shown === lat.id}
+                <td>
+                  <Button
+                    ref="true"
+                    label="Save"
+                    on:click="{() => console.log('gesaved')}" />
+                </td>
+              {:else}
+                <td>
+                  <Button
+                    ref="true"
+                    label="edit"
+                    on:click="{() => {
+                      shownText(lat.id);
+                    }}" />
+                </td>
+              {/if}
+            </tr>
+          {/each}
+        </tbody>
+      {/if}
+    </table>
+  </section>
+{/if}

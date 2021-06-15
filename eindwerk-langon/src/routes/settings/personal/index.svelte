@@ -2,54 +2,81 @@
 @import "../../../style/elements/Personal.scss";
 </style>
 
-<!-- <script context="module">
-export async function preload(page, session) {
-  const result = await this.fetch("https://langon.josdeberdt.be/users/me", {
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiNWI1NzQ2LWNhNGItNGY0MS1iYzQyLTE1NGFkNDRkZTJmYiIsImlhdCI6MTYyMzUzNzg3OSwiZXhwIjoxNjIzNTM4Nzc5fQ.0BXf2sX7hguUiXdXiGXA6LvMrTQDHAj2SQCOJZivH8s ",
-      "Content-type": "application/json",
-    },
-  });
-
-  let users = await result.json();
-  users = users.data;
-  console.log(users);
-  return { users };
-}
-</script> -->
 <script>
 import Title from "../../../components/Title.svelte";
 import Inputfield from "../../../components/Inputfield.svelte";
 import Button from "../../../components/Button.svelte";
 import ImageUpload from "../../../components/ImageUpload.svelte";
-// import { onMount } from "svelte";
+import { onMount } from "svelte";
+import { checkAuth } from "../../auth.js";
 
-// export let users;
+let isAuth = false;
+// console.log(isAuth);
+onMount(async () => {
+  try {
+    isAuth = await checkAuth(["Administrator"]);
+    const result = await fetch("https://langon.josdeberdt.be/users/me", {
+      headers: {
+        Authorization: "Bearer " + isAuth.tokens.access_token,
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+    });
+
+    let currentObject = await result.json();
+    users = currentObject.data;
+    console.log(currentObject);
+    console.log(isAuth);
+  } catch (err) {
+    console.log(err);
+  }
+
+  console.log(isAuth);
+});
+
+export let users;
 </script>
 
-<div class="personal marginSet">
-  <Title text="Your Settings" />
-  <div class="personal_imageupload">
-    <ImageUpload />
+{#if isAuth !== false}
+  <div class="personal marginSet">
+    <Title text="Your Settings" />
+    <div class="personal_imageupload">
+      <ImageUpload />
+    </div>
+    <div class="personal_inputs">
+      {#if users}
+        <div class="personal_personalInformation placeInput">
+          <Inputfield
+            value="{users.first_name}"
+            placeholder="Romanie"
+            label="firstname" />
+          <Inputfield
+            value="{users.last_name}"
+            placeholder="Delporte"
+            label="lastname" />
+        </div>
+        <div class="personal_change placeInput">
+          <Inputfield
+            value="{users.password}"
+            placeholder="Your password"
+            label="Your password"
+            type="password" />
+          <Inputfield
+            placeholder="change your password"
+            label="Change password"
+            type="password" />
+        </div>
+        <div class="personal_email">
+          <Inputfield
+            value="{users.email}"
+            placeholder="romaniedelporte230@gmail.com"
+            label="Your Email" />
+        </div>
+        <div class="personal_button">
+          <a href="/login">Delete your account</a>
+          <Button label="Save" />
+        </div>
+      {/if}
+    </div>
   </div>
-  <!-- <img src="{users.avatar}" alt="profile" /> -->
-  <div class="personal_personalInformation placeInput">
-    <Inputfield placeholder="Romanie" label="firstname" />
-    <Inputfield placeholder="Delporte" label="lastname" />
-  </div>
-  <div class="personal_change placeInput">
-    <Inputfield
-      placeholder="Your password"
-      label="Your password"
-      type="password" />
-    <Inputfield placeholder="Test123" label="Change password" type="password" />
-  </div>
-  <div class="personal_email">
-    <Inputfield placeholder="romaniedelporte230@gmail.com" label="Your Email" />
-  </div>
-  <div class="personal_button">
-    <a href="/login">Delete your account</a>
-    <Button label="Save" />
-  </div>
-</div>
+{/if}

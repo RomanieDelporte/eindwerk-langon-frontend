@@ -1,4 +1,4 @@
-#Vertalingsplatform met Svelte(sapper), Directus en i18next
+Vertalingsplatform met Svelte(sapper), Directus en i18next
 
 [Svelte](https://svelte.dev/)
 [Directus](https://directus.io/)
